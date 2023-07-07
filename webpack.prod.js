@@ -7,5 +7,9 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, "assets/js"),
 		filename: "app.js",
+        clean: true
+	},
+    resolve: {
+		extensions: [".json", ".js", ".jsx"],
 	},
 };
