@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'ru' }}">
+{%- include head.html -%}
+<body class="relative">
+
+	{%- include header.html -%}
+
+	<main>
+		{{ content }}
+	</main>
+
+	{%- include footer.html -%}
+
+	<script type="module" src="assets/js/app.js"></script>
+
+</body>
+</html>

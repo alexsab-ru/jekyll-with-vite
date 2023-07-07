@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./src/style.css -o ./assets/style.css --watch | webpack --watch | bundle exec jekyll serve --watch --livereload --incremental",
+    "dev": "npx tailwindcss -i ./src/style.css -o ./assets/style.css --watch | webpack --watch | bundle exec jekyll serve --livereload --incremental",
     "build": "npx tailwindcss -o ./assets/style.css --minify | webpack --config webpack.prod.js"
   },
   "keywords": [],
