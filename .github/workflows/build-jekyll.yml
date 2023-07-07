@@ -8,14 +8,22 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x, 20.x]
     steps:
       # Reference a branch
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
-        run: |
-          npm ci
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}  # Specify the version you need
+
+      - name: Install Dependencies
+        run: npm ci
+
       # Use GitHub Actions' cache to cache dependencies on servers
       - uses: actions/cache@v3
         with:
