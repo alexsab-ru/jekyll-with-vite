@@ -1,0 +1,15 @@
+{
+  "entrypoints/application.js": {
+    "file": "assets/application-cab05ffa.js",
+    "imports": [
+      "entrypoints/test.js"
+    ],
+    "isEntry": true,
+    "src": "entrypoints/application.js"
+  },
+  "entrypoints/test.js": {
+    "file": "assets/test-2d054408.js",
+    "isEntry": true,
+    "src": "entrypoints/test.js"
+  }
+}
