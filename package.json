@@ -6,8 +6,9 @@
   "scripts": {
     "init": "cd public && bundle install",
     "vite": "cd vite && APP_ENV=development vite dev",
-    "dev": "concurrently \"cd vite && APP_ENV=development vite dev\" \"cd public && bundle exec jekyll serve -l -o\"",
-    "build": "cd vite && vite build"
+    "jekyll": "cd public && JEKYLL_ENV=development bundle exec jekyll serve -l -o",
+    "dev": "concurrently \"cd vite && APP_ENV=development vite dev\" \"cd public && JEKYLL_ENV=development bundle exec jekyll serve -l -o\"",
+    "build": "cd vite && vite build && mv ../public/dist/manifest.json ../public/_data/manifest.json"
   },
   "keywords": [],
   "author": "",
