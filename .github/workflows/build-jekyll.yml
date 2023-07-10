@@ -24,8 +24,8 @@ jobs:
         run: |
           npm install -g pnpm
           pnpm install --no-frozen-lockfile
-          pnpm init
-          pnpm build
+          pnpm run init
+          pnpm run build
 
       # Use GitHub Actions' cache to cache dependencies on servers
       - uses: actions/cache@v3
