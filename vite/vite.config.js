@@ -33,7 +33,7 @@ export default defineConfig({
   ],
 
   // config
-  root: 'src',
+  root: '',
   // base: '',
   base: process.env.APP_ENV === 'development'
     ? '/'
@@ -41,7 +41,7 @@ export default defineConfig({
 
   build: {
     // output dir for production build
-    outDir: '../../public/dist',
+    outDir: '../public/dist',
     emptyOutDir: true,
 
     // emit manifest so PHP can find the hashed files

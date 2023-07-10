@@ -10,6 +10,12 @@
 	<meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
 	<meta property="og:type" content="website" />
 
-	<link rel="stylesheet" href="assets/style.css">
+	{% if jekyll.environment == "development" %}
+		<link rel="stylesheet" href="{{ site.vitehost | append: "/src/style.css" }}">
+	{% else %}
+		{% if site.data.manifest and site.data.manifest['src/style.css'] and site.data.manifest['src/style.css'].file %}
+			<script type="module" src="{{ site.data.manifest['style.css'].file | prepend: "/dist/" }}"></script>
+		{% endif %}
+	{% endif %}
 
 </head>
