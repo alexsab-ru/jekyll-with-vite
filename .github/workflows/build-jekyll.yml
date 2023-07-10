@@ -14,6 +14,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.2
+          bundler-cache: true # 'ruby/setup-ruby' action installs bundler and caches gems automatically
+      
+      - name: Install Dependencies
+        run: bundle install
+
       - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
           npm install -g pnpm
@@ -42,3 +51,12 @@ jobs:
           cname: ''  # Default is to not use a cname
           actor: ''                  # Default is the GITHUB_ACTOR
           pre_build_commands: ''     # Installing additional dependencies (Arch Linux)
+  
+  notify_telegram:
+    needs: build_and_deploy
+    uses: ./.github/workflows/github-telegram.yml
+    with:
+      additional-text: 'After build'
+    secrets:
+      TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
