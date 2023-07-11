@@ -1,20 +1,31 @@
 {
-  "name": "jekyll-vite-2",
+  "name": "jekyll-with-vite",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./src/style.css -o ./assets/style.css --watch | webpack --watch | bundle exec jekyll serve --livereload --incremental",
-    "build": "npx tailwindcss -o ./assets/style.css --minify | webpack --config webpack.prod.js"
+    "init": "cd public && bundle install",
+    "vite": "cd vite && APP_ENV=development vite dev",
+    "jekyll": "cd public && JEKYLL_ENV=development bundle exec jekyll serve -l -o",
+    "dev": "concurrently \"cd vite && APP_ENV=development vite dev\" \"cd public && JEKYLL_ENV=development bundle exec jekyll serve -l -o\"",
+    "devwin": "concurrently \"cd vite && cross-env APP_ENV=development vite dev\" \"cd public && cross-env JEKYLL_ENV=development bundle exec jekyll serve -l -o\"",
+    "build": "cd vite && APP_ENV=production vite build && cd ../public && mv dist/manifest.json _data/manifest.json && rm -rf assets && mv dist/assets assets && JEKYLL_ENV=production bundle exec jekyll build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "vue": "^3.2.45"
+  },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/compiler-sfc": "^3.2.45",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.4.25",
     "tailwindcss": "^3.3.2",
-    "webpack": "^5.88.1",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
-    "webpack-merge": "^5.9.0"
+    "vite": "^4.0.4",
+    "vite-plugin-live-reload": "^3.0.1"
   }
 }
