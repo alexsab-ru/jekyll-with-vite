@@ -69,3 +69,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+
+  notify_telegram:
+    needs: deploy
+    uses: ./.github/workflows/github-telegram.yml
+    with:
+      additional-text: 'After deploy'
+    secrets:
+      TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
