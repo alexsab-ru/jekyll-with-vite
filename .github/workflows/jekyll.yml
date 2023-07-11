@@ -49,7 +49,7 @@ jobs:
           npm install -g pnpm
           pnpm install --no-frozen-lockfile
           pnpm run init
-          pnpm run build
+          pnpm run deploy
           cd public
           bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:

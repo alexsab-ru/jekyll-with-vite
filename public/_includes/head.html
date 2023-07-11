@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="{{ site.vitehost | append: "/src/style.css" }}">
 	{% else %}
 		{% if site.data.manifest and site.data.manifest['src/style.css'] and site.data.manifest['src/style.css'].file %}
-			<script type="module" src="{{ site.data.manifest['src/style.css'].file | prepend: "/dist/" }}"></script>
+			<script type="module" src="{{ site.data.manifest['src/style.css'].file | prepend: "" }}"></script>
 		{% endif %}
 	{% endif %}
 
