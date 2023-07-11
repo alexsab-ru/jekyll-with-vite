@@ -8,7 +8,7 @@
     "vite": "cd vite && APP_ENV=development vite dev",
     "jekyll": "cd public && JEKYLL_ENV=development bundle exec jekyll serve -l -o",
     "dev": "concurrently \"cd vite && APP_ENV=development vite dev\" \"cd public && JEKYLL_ENV=development bundle exec jekyll serve -l -o\"",
-    "build": "cd vite && vite build && cd ../public && mv dist/manifest.json _data/manifest.json && rm -rf assets && mv dist/assets assets && bundle exec jekyll build"
+    "build": "cd vite && APP_ENV=production vite build && cd ../public && mv dist/manifest.json _data/manifest.json && rm -rf assets && mv dist/assets assets && JEKYLL_ENV=production bundle exec jekyll build"
   },
   "keywords": [],
   "author": "",
